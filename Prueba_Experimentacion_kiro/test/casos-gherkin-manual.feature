@@ -59,12 +59,12 @@ Feature: Almacenamiento en DynamoDB
   @critico @almacenamiento
   Scenario: Almacenamiento exitoso de nuevos campos
     Given tengo una transacción validada con:
-      | campo               | valor           |
-      | tid                 | POS123456789    |
-      | mid                 | MERCHANT001     |
-      | parent_company_code | CHAIN001        |
-      | transaction_id      | TXN_001         |
-      | amount              | 100.50          |
+      | campo               | valor        |
+      | tid                 | POS123456789 |
+      | mid                 | MERCHANT001  |
+      | parent_company_code | CHAIN001     |
+      | transaction_id      | TXN_001      |
+      | amount              | 100.50       |
     When proceso la transacción
     Then los datos deben almacenarse en DynamoDB
     And deben estar presentes en validated_data, sold_data, refund_data y response
@@ -73,10 +73,10 @@ Feature: Almacenamiento en DynamoDB
   @critico @consultas
   Scenario: Creación y funcionalidad de GSI1
     Given tengo múltiples transacciones almacenadas:
-      | transaction_id | tid    | mid     | parent_company_code | amount |
-      | TXN_001       | POS001 | MERCH001| CHAIN001           | 100.00 |
-      | TXN_002       | POS002 | MERCH002| CHAIN001           | 200.00 |
-      | TXN_003       | POS003 | MERCH001| CHAIN002           | 150.00 |
+      | transaction_id | tid    | mid      | parent_company_code | amount |
+      | TXN_001        | POS001 | MERCH001 | CHAIN001            | 100.00 |
+      | TXN_002        | POS002 | MERCH002 | CHAIN001            | 200.00 |
+      | TXN_003        | POS003 | MERCH001 | CHAIN002            | 150.00 |
     When consulto GSI1 por parent_company_code "CHAIN001"
     Then debo obtener TXN_001 y TXN_002
     And el tiempo de respuesta debe ser menor a 100ms
@@ -103,41 +103,41 @@ Feature: Logging y Auditoría
   @importante @logging
   Scenario: Logging completo en procesamiento principal
     Given tengo una transacción con:
-      | campo               | valor           |
-      | transaction_id      | TXN_LOG_001     |
-      | tid                 | POS_LOG_001     |
-      | mid                 | MERCH_LOG_001   |
-      | parent_company_code | CHAIN_LOG_001   |
+      | campo               | valor         |
+      | transaction_id      | TXN_LOG_001   |
+      | tid                 | POS_LOG_001   |
+      | mid                 | MERCH_LOG_001 |
+      | parent_company_code | CHAIN_LOG_001 |
     When proceso la transacción
     Then los logs deben contener TID, MID y parent_company_code en:
-      | punto_de_log              |
-      | Inicio de procesamiento   |
-      | Validación exitosa        |
-      | Almacenamiento DynamoDB   |
-      | Finalización transacción  |
+      | punto_de_log             |
+      | Inicio de procesamiento  |
+      | Validación exitosa       |
+      | Almacenamiento DynamoDB  |
+      | Finalización transacción |
     And los timestamps deben ser precisos y consistentes
 
   @importante @auditoria
   Scenario: Auditoría de cambios de transacción
     Given tengo una transacción existente:
-      | campo               | valor_original  |
-      | transaction_id      | TXN_AUDIT_001   |
-      | tid                 | POS_ORIGINAL    |
-      | mid                 | MERCH_ORIGINAL  |
-      | parent_company_code | CHAIN_ORIGINAL  |
-      | status              | pending         |
+      | campo               | valor_original |
+      | transaction_id      | TXN_AUDIT_001  |
+      | tid                 | POS_ORIGINAL   |
+      | mid                 | MERCH_ORIGINAL |
+      | parent_company_code | CHAIN_ORIGINAL |
+      | status              | pending        |
     When modifico la transacción con:
-      | campo               | valor_nuevo     |
-      | tid                 | POS_UPDATED     |
-      | mid                 | MERCH_UPDATED   |
-      | parent_company_code | CHAIN_UPDATED   |
-      | status              | completed       |
+      | campo               | valor_nuevo   |
+      | tid                 | POS_UPDATED   |
+      | mid                 | MERCH_UPDATED |
+      | parent_company_code | CHAIN_UPDATED |
+      | status              | completed     |
     Then debe generarse un log de auditoría con:
-      | elemento           |
-      | Estado anterior    |
-      | Estado nuevo       |
-      | Usuario/sistema    |
-      | Timestamp preciso  |
+      | elemento          |
+      | Estado anterior   |
+      | Estado nuevo      |
+      | Usuario/sistema   |
+      | Timestamp preciso |
 
 Feature: Consultas por Cadena
   Como analista de negocio
@@ -147,10 +147,10 @@ Feature: Consultas por Cadena
   @importante @consultas
   Scenario: Consulta exitosa por cadena específica
     Given tengo transacciones almacenadas:
-      | transaction_id | parent_company_code | mid     | amount | date       |
-      | TXN_001       | CHAIN001           | MERCH001| 100.00 | 2024-01-15 |
-      | TXN_002       | CHAIN001           | MERCH002| 200.00 | 2024-01-15 |
-      | TXN_003       | CHAIN002           | MERCH003| 150.00 | 2024-01-15 |
+      | transaction_id | parent_company_code | mid      | amount | date       |
+      | TXN_001        | CHAIN001            | MERCH001 | 100.00 | 2024-01-15 |
+      | TXN_002        | CHAIN001            | MERCH002 | 200.00 | 2024-01-15 |
+      | TXN_003        | CHAIN002            | MERCH003 | 150.00 | 2024-01-15 |
     When ejecuto GET /transactions/by-chain/CHAIN001
     Then debo obtener TXN_001 y TXN_002 únicamente
     And los datos deben incluir TID, MID completos
@@ -163,10 +163,10 @@ Feature: Consultas por Cadena
     When consulto con filtros:
       | filtro              | valor        |
       | parent_company_code | CHAIN_FILTER |
-      | date_from          | 2024-01-15   |
-      | date_to            | 2024-01-15   |
-      | amount_min         | 150          |
-      | status             | completed    |
+      | date_from           | 2024-01-15   |
+      | date_to             | 2024-01-15   |
+      | amount_min          | 150          |
+      | status              | completed    |
     Then debo obtener solo transacciones que cumplan TODOS los filtros
     And el tiempo de respuesta debe ser aceptable
 
