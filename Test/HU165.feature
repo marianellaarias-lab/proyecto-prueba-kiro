@@ -55,7 +55,7 @@ Feature: API Validaciones TID y Merchant ID
     Given el merchant está usando API V2
     And no se envía header token de versión en la solicitud
     When el API recibe la solicitud
-    Then respnde con error 400 en el procesamiento
+    Then responde con error 400 en el procesamiento
 
   @negative @api_v2
   Scenario: Procesamiento en API V2 con datos de API V1 sin tid ni mid
@@ -63,7 +63,7 @@ Feature: API Validaciones TID y Merchant ID
     And no se envía tid ni mid
     When el API recibe la solicitud
     Then respnde con error 400 en el procesamiento
-    And con el mensaje "faltan tid y mid en la solicitud"
+    And con el mensaje "faltan tid y mid en la solicitud" //(me parece redundante con el de abajo YT)
 
   @negative @api_v2 @missing_fields
   Scenario Outline: Error por campos faltantes requeridos en API V2
@@ -71,7 +71,7 @@ Feature: API Validaciones TID y Merchant ID
     And el header de versión está presente en la solicitud
     When se envía una solicitud sin el campo <campo_faltante>
     Then el API responde con Error 400
-    And el mensaje indica que los campos son requeridos en V2 //(fijarnos el mensaje)
+    And el mensaje indica que los campos son requeridos en V2 //(fijarnos el mensaje) (dejé solo este scenario YT)
 
     Examples:
       | campo_faltante |
