@@ -149,22 +149,22 @@ Then el sistema debe limitar el tamaño máximo a 50 registros
 
 ## Preguntas para el Product Owner
 
-1. **Creación de Parent Company**: ¿Cuáles son los campos obligatorios y opcionales para crear un nuevo Parent Company?
+1. **Búsqueda sin resultados**: ¿Qué mensaje se debe mostrar cuando la búsqueda no retorna resultados?
 
-2. **Validaciones de Company Name**: ¿Existe alguna validación específica para el nombre de la compañía (longitud mínima/máxima, caracteres permitidos)?
+2. **Comportamiento de filtros combinados**: ¿Se puede combinar la búsqueda con los filtros de estatus simultáneamente?
 
-3. **Asociación de Merchants**: ¿Cómo se realiza la asociación/desasociación de merchants a un Parent Company?
+3. **Ordenación por defecto**: ¿Cuál es el orden por defecto al cargar la lista inicialmente (ascendente/descendente)?
 
-4. **Eliminación**: ¿Se puede eliminar un Parent Company que tiene merchants asociados? ¿Qué sucede con los merchants?
+4. **Acciones desde el listado**: ¿Hay alguna acción disponible desde cada fila del listado (ver detalle, editar, etc.)?
 
-5. **Edición**: ¿Qué campos se pueden editar de un Parent Company existente?
+5. **Formato del ID**: ¿El ID tiene algún formato específico o es simplemente un identificador alfanumérico?
 
-6. **Estados del sistema**: ¿Existen otros estados además de Active/Inactive?
+6. **Conteo de merchants**: ¿El conteo incluye merchants activos e inactivos, o solo activos?
 
-7. **Permisos específicos**: ¿Los diferentes tipos de Analyst tienen las mismas capacidades CRUD o hay diferencias?
+7. **Persistencia de filtros**: ¿Los filtros y configuración de paginación deben persistir al salir y volver a la pestaña?
 
-8. **Búsqueda avanzada**: ¿Se requiere búsqueda por otros campos además del company_name?
+8. **Indicadores visuales**: ¿Hay algún indicador visual especial para Parent Companies sin merchants asociados?
 
-9. **Exportación**: ¿Se requiere funcionalidad de exportar la lista de Parent Companies?
+9. **Búsqueda en tiempo real**: ¿La búsqueda se ejecuta automáticamente mientras se escribe o requiere presionar Enter/botón buscar?
 
-10. **Notificaciones**: ¿Se requieren notificaciones cuando se crean/modifican Parent Companies?
+10. **Permisos de visualización**: ¿Todos los roles mencionados (Manager, Analyst 805/806, 807) tienen los mismos permisos de visualización del listado?
