@@ -1,4 +1,4 @@
-# USER STORY 237 - REFINADA
+# Template HU 
 
 ## Historia de Usuario
 **Como** Definición de rol/usuario
@@ -6,6 +6,32 @@
 **Para** Con qué finalidad
 
 ## Definición de Campos
+
+## Qué completar en los campos: 
+1. **Nombre del campo**
+El nombre estándar del elemento (por ejemplo: tenant_id).
+2. **Descripción / propósito**
+¿Qué representa? ¿Para qué se usa? ¿Qué rol cumple dentro del sistema?
+3. **Tipo de dato**
+string, number, boolean, date, dropdown, etc.
+4. **Reglas de formato / longitud**
+Ejemplo: string de 36 caracteres, máximo 100 caracteres, solo letras y números, etc.
+5. **Visibilidad / Disponibilidad por rol**
+¿Quién lo ve? ¿Quién puede editarlo?
+Ej: solo Solution Owner, visible para todos los roles, etc.
+6. **Comportamiento esperado**
+Cómo debe funcionar:
+Ordenamiento (alfabético, por fecha, etc.)
+Si es editable o solo lectura
+Si es obligatorio u opcional
+Si activa algún evento o contexto
+7. **Dependencias o relaciones**
+Si el campo depende de otro o afecta a otro.
+Ej: El Program Selector depende del tenant activo.
+8. **Validaciones**
+Errores, restricciones, mensajes esperados.
+
+## *Ejemplos de campos*:
 
 ### Campo de trabajo #1 *(son los titulos generales de lo que se va a trabajar en la HU)*
 - **Company Name**: Nombre de la compañía matriz (string)
@@ -31,6 +57,13 @@
 
 ## Reglas de Negocio
 
+En esta sección se deberá colocar, como indica el titulo, reglas generales. Lo que no debe incluir son: 
+* Detalles técnicos de implementación (SQL, APIs específicas)
+* Descripción de la UI 
+* Pasos de testing
+
+## *Ejemplos de reglas de negocio*:
+
 ### RN-01: Visualización y Navegación
 1. Al entrar al segmento de Merchants, se debe presentar la paestaña Parent Company
 2. La lista debe mostrar todos los Parent Companies por defecto
@@ -45,6 +78,10 @@
 6. NO debe traer companies que contengan "wal" en el medio del nombre
 
 ## Escenarios Gherkin
+
+Se espera de estos escenarios que sean una descripción de pasos a modo de guia del comportamiento esperado de acuerdo a ciertas acciones esperables y no esperables del sistema, implementación o mejora descripto en la HU 
+
+## *Ejemplos de escenarios gherking*:
 
 ### Escenario 1: Visualización inicial de Parent Companies
 ```gherkin
@@ -66,10 +103,4 @@ Then debo ver solo los Parent Companies que empiecen con "Wal"
 And debo ver resultados como "Walmart", "Walgreens"
 And NO debo ver resultados que contengan "wal" en el medio como "Super market Walmart"
 ```
-
-## Preguntas para el Product Owner
-
-1. **Búsqueda sin resultados**: ¿Qué mensaje se debe mostrar cuando la búsqueda no retorna resultados?
-
-2. **Comportamiento de filtros combinados**: ¿Se puede combinar la búsqueda con los filtros de estatus simultáneamente?
 
