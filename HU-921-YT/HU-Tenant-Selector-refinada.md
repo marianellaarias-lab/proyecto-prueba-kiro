@@ -236,11 +236,11 @@ And toda la data en cada módulo debería corresponder a "Tenant A"
 
 ### Indicador Visual del Tenant Activo
 
-22. **Contenido del indicador**: ¿El indicador muestra solo `tenant_name`, solo `tenant_id`, o ambos?
+22. **Contenido del indicador**: ¿El indicador muestra solo `tenant_name`, solo `tenant_id`, o ambos, o es logo del tenant?
 
 23. **Estilo del indicador**: ¿El indicador tiene color, ícono o badge distintivo?  --- UI
 
-24. **Ubicación del indicador**: ¿Dónde exactamente se ubica el indicador? (header, breadcrumb, junto al selector, esquina superior) ---- UI
+24. **Ubicación del indicador**: ¿Dónde exactamente se ubica el indicador? (header, breadcrumb, junto al selector, esquina superior) ---- UI puede ser el logo del tenant
 
 ### Comportamiento de Refresco de Vista
 
@@ -254,22 +254,28 @@ And toda la data en cada módulo debería corresponder a "Tenant A"
 
 ### Validación y Seguridad
 
-28. **Tenant_ID en URLs**: ¿Las URLs incluyen el tenant_id? (ej: `/dashboard?tenant=123` o `/tenants/123/dashboard`)
+28. **Tenant_ID en URLs**: ¿Las URLs incluyen el tenant_id? (ej: `/dashboard?tenant=123` o `/tenants/123/dashboard`) --- DESA
 
-29. **Manipulación de URL**: ¿Qué pasa si un usuario manipula la URL con otro tenant_id? ¿Se valida y sincroniza automáticamente con el selector?
+29. **Manipulación de URL**: ¿Qué pasa si un usuario manipula la URL con otro tenant_id? ¿Se valida y sincroniza automáticamente con el selector? ---- DESA
 
-30. **Validación en cada request**: ¿El backend debe validar el tenant_id en cada request HTTP?
+30. **Validación en cada request**: ¿El backend debe validar el tenant_id en cada request HTTP? ---- DESA
 
 ### Casos Especiales
 
-31. **Tenant sin datos**: ¿Qué se muestra si el tenant seleccionado existe pero no tiene datos?
+31. **Tenant sin datos**: Es posible tener un tenant sin datos?
+    -¿Qué se muestra si el tenant seleccionado existe pero no tiene datos?
     - ¿Mensaje específico "No hay información disponible para este tenant"?
-    - ¿Vista vacía genérica?
+    - ¿Vista vacía genérica? 
 
-32. **Error al cargar tenants**: ¿Qué mensaje específico debe mostrarse si falla la carga de la lista de tenants?
+32. **Error al cargar tenants**: ¿Qué mensaje específico debe mostrarse si falla la carga de la lista de tenants? ---- DESA
+
 
 33. **Auditoría de cambios**: ¿Se debe registrar en audit log cada cambio de tenant realizado por el Solution Owner? ¿Qué información se guarda? (usuario, tenant_anterior, tenant_nuevo, timestamp)
 
-34. **Indicador en modales**: ¿Los modales deben mostrar también el indicador del tenant activo o solo el selector en el layout principal?
+34. **Indicador en modales**: ¿Los modales deben mostrar también el indicador del tenant activo o solo el selector en el layout principal? ---- SI ES EL LOGO DEL TENANT SE VA A VER SIEMPRE
 
 35. **Posición del selector**: ¿En qué ubicación específica del layout debe estar el selector de tenants? (header, sidebar, toolbar, otra ubicación) --- UI
+
+36. **Programas por tenants** Cuando se seleccione un tenant va a tener los programas (cuantos programas pueden ser)
+
+37. **Comportamiento al cambiar de tenant** Cuando hay un cambio de tenant debe haber una vista inicial por defecto? o conservará la posición actual del tenant A cambiando los Datos del tenant B?
