@@ -215,7 +215,7 @@ And toda la data en cada módulo debería corresponder a "Tenant A"
     - ¿En localStorage del navegador?
     - ¿En cookie?
 
-12. **Persistencia entre sesiones**: ¿Qué pasa si el usuario cierra y vuelve a abrir el navegador? ¿Debe recordar el último tenant seleccionado?
+12. **Persistencia entre sesiones**: ¿Qué pasa si el usuario cierra y vuelve a abrir el navegador? ¿Debe recordar el último tenant seleccionado? o ¿volver a un tentant por defecto? o ¿volver a la pantalla 'all tentant'
 
 13. **Múltiples pestañas**: ¿Qué pasa si el usuario abre múltiples pestañas del navegador? ¿Se sincronizan automáticamente o son independientes?
 
@@ -241,6 +241,9 @@ And toda la data en cada módulo debería corresponder a "Tenant A"
 23. **Estilo del indicador**: ¿El indicador tiene color, ícono o badge distintivo?  --- UI
 
 24. **Ubicación del indicador**: ¿Dónde exactamente se ubica el indicador? (header, breadcrumb, junto al selector, esquina superior) ---- UI puede ser el logo del tenant
+23. a **El logo sera un indicador**: ¿Dentro de la ui el logo de cada tentant va a cambiar de acuerdo al tentant en que estemos parados?
+
+24. **Ubicación del indicador**: ¿Dónde exactamente se ubica el indicador? (header, breadcrumb, junto al selector, esquina superior) ---- UI
 
 ### Comportamiento de Refresco de Vista
 
